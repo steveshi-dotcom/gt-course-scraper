@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F1C961C2813BF5C00469B4F /* gt_course_scraperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C961B2813BF5C00469B4F /* gt_course_scraperApp.swift */; };
+		0F1C961E2813BF5C00469B4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C961D2813BF5C00469B4F /* ContentView.swift */; };
+		0F1C96202813BF5E00469B4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C961F2813BF5E00469B4F /* Assets.xcassets */; };
+		0F1C96232813BF5E00469B4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C96222813BF5E00469B4F /* Preview Assets.xcassets */; };
+		0F1C962D2813BF5E00469B4F /* gt_course_scraperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C962C2813BF5E00469B4F /* gt_course_scraperTests.swift */; };
+		0F1C96372813BF5E00469B4F /* gt_course_scraperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C96362813BF5E00469B4F /* gt_course_scraperUITests.swift */; };
+		0F1C96392813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C96382813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0F1C96292813BF5E00469B4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F1C96102813BF5C00469B4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F1C96172813BF5C00469B4F;
+			remoteInfo = "gt-course-scraper";
+		};
+		0F1C96332813BF5E00469B4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F1C96102813BF5C00469B4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F1C96172813BF5C00469B4F;
+			remoteInfo = "gt-course-scraper";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F1C96182813BF5C00469B4F /* gt-course-scraper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gt-course-scraper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F1C961B2813BF5C00469B4F /* gt_course_scraperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gt_course_scraperApp.swift; sourceTree = "<group>"; };
+		0F1C961D2813BF5C00469B4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0F1C961F2813BF5E00469B4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0F1C96222813BF5E00469B4F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0F1C96282813BF5E00469B4F /* gt-course-scraperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "gt-course-scraperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F1C962C2813BF5E00469B4F /* gt_course_scraperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gt_course_scraperTests.swift; sourceTree = "<group>"; };
+		0F1C96322813BF5E00469B4F /* gt-course-scraperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "gt-course-scraperUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F1C96362813BF5E00469B4F /* gt_course_scraperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gt_course_scraperUITests.swift; sourceTree = "<group>"; };
+		0F1C96382813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gt_course_scraperUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0F1C96152813BF5C00469B4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F1C96252813BF5E00469B4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F1C962F2813BF5E00469B4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F1C960F2813BF5C00469B4F = {
+			isa = PBXGroup;
+			children = (
+				0F1C961A2813BF5C00469B4F /* gt-course-scraper */,
+				0F1C962B2813BF5E00469B4F /* gt-course-scraperTests */,
+				0F1C96352813BF5E00469B4F /* gt-course-scraperUITests */,
+				0F1C96192813BF5C00469B4F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0F1C96192813BF5C00469B4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0F1C96182813BF5C00469B4F /* gt-course-scraper.app */,
+				0F1C96282813BF5E00469B4F /* gt-course-scraperTests.xctest */,
+				0F1C96322813BF5E00469B4F /* gt-course-scraperUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0F1C961A2813BF5C00469B4F /* gt-course-scraper */ = {
+			isa = PBXGroup;
+			children = (
+				0F1C961B2813BF5C00469B4F /* gt_course_scraperApp.swift */,
+				0F1C961D2813BF5C00469B4F /* ContentView.swift */,
+				0F1C961F2813BF5E00469B4F /* Assets.xcassets */,
+				0F1C96212813BF5E00469B4F /* Preview Content */,
+			);
+			path = "gt-course-scraper";
+			sourceTree = "<group>";
+		};
+		0F1C96212813BF5E00469B4F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0F1C96222813BF5E00469B4F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0F1C962B2813BF5E00469B4F /* gt-course-scraperTests */ = {
+			isa = PBXGroup;
+			children = (
+				0F1C962C2813BF5E00469B4F /* gt_course_scraperTests.swift */,
+			);
+			path = "gt-course-scraperTests";
+			sourceTree = "<group>";
+		};
+		0F1C96352813BF5E00469B4F /* gt-course-scraperUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0F1C96362813BF5E00469B4F /* gt_course_scraperUITests.swift */,
+				0F1C96382813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift */,
+			);
+			path = "gt-course-scraperUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0F1C96172813BF5C00469B4F /* gt-course-scraper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F1C963C2813BF5E00469B4F /* Build configuration list for PBXNativeTarget "gt-course-scraper" */;
+			buildPhases = (
+				0F1C96142813BF5C00469B4F /* Sources */,
+				0F1C96152813BF5C00469B4F /* Frameworks */,
+				0F1C96162813BF5C00469B4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "gt-course-scraper";
+			productName = "gt-course-scraper";
+			productReference = 0F1C96182813BF5C00469B4F /* gt-course-scraper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0F1C96272813BF5E00469B4F /* gt-course-scraperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F1C963F2813BF5E00469B4F /* Build configuration list for PBXNativeTarget "gt-course-scraperTests" */;
+			buildPhases = (
+				0F1C96242813BF5E00469B4F /* Sources */,
+				0F1C96252813BF5E00469B4F /* Frameworks */,
+				0F1C96262813BF5E00469B4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0F1C962A2813BF5E00469B4F /* PBXTargetDependency */,
+			);
+			name = "gt-course-scraperTests";
+			productName = "gt-course-scraperTests";
+			productReference = 0F1C96282813BF5E00469B4F /* gt-course-scraperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0F1C96312813BF5E00469B4F /* gt-course-scraperUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F1C96422813BF5E00469B4F /* Build configuration list for PBXNativeTarget "gt-course-scraperUITests" */;
+			buildPhases = (
+				0F1C962E2813BF5E00469B4F /* Sources */,
+				0F1C962F2813BF5E00469B4F /* Frameworks */,
+				0F1C96302813BF5E00469B4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0F1C96342813BF5E00469B4F /* PBXTargetDependency */,
+			);
+			name = "gt-course-scraperUITests";
+			productName = "gt-course-scraperUITests";
+			productReference = 0F1C96322813BF5E00469B4F /* gt-course-scraperUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0F1C96102813BF5C00469B4F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					0F1C96172813BF5C00469B4F = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					0F1C96272813BF5E00469B4F = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 0F1C96172813BF5C00469B4F;
+					};
+					0F1C96312813BF5E00469B4F = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 0F1C96172813BF5C00469B4F;
+					};
+				};
+			};
+			buildConfigurationList = 0F1C96132813BF5C00469B4F /* Build configuration list for PBXProject "gt-course-scraper" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0F1C960F2813BF5C00469B4F;
+			productRefGroup = 0F1C96192813BF5C00469B4F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0F1C96172813BF5C00469B4F /* gt-course-scraper */,
+				0F1C96272813BF5E00469B4F /* gt-course-scraperTests */,
+				0F1C96312813BF5E00469B4F /* gt-course-scraperUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0F1C96162813BF5C00469B4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F1C96232813BF5E00469B4F /* Preview Assets.xcassets in Resources */,
+				0F1C96202813BF5E00469B4F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F1C96262813BF5E00469B4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F1C96302813BF5E00469B4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F1C96142813BF5C00469B4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F1C961E2813BF5C00469B4F /* ContentView.swift in Sources */,
+				0F1C961C2813BF5C00469B4F /* gt_course_scraperApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F1C96242813BF5E00469B4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F1C962D2813BF5E00469B4F /* gt_course_scraperTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F1C962E2813BF5E00469B4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F1C96372813BF5E00469B4F /* gt_course_scraperUITests.swift in Sources */,
+				0F1C96392813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0F1C962A2813BF5E00469B4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F1C96172813BF5C00469B4F /* gt-course-scraper */;
+			targetProxy = 0F1C96292813BF5E00469B4F /* PBXContainerItemProxy */;
+		};
+		0F1C96342813BF5E00469B4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F1C96172813BF5C00469B4F /* gt-course-scraper */;
+			targetProxy = 0F1C96332813BF5E00469B4F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0F1C963A2813BF5E00469B4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0F1C963B2813BF5E00469B4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0F1C963D2813BF5E00469B4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"gt-course-scraper/Preview Content\"";
+				DEVELOPMENT_TEAM = WGVRJ4U92U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "arbitrary-steve.gt-course-scraper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0F1C963E2813BF5E00469B4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"gt-course-scraper/Preview Content\"";
+				DEVELOPMENT_TEAM = WGVRJ4U92U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "arbitrary-steve.gt-course-scraper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0F1C96402813BF5E00469B4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WGVRJ4U92U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "arbitrary-steve.gt-course-scraperTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gt-course-scraper.app/gt-course-scraper";
+			};
+			name = Debug;
+		};
+		0F1C96412813BF5E00469B4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WGVRJ4U92U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "arbitrary-steve.gt-course-scraperTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gt-course-scraper.app/gt-course-scraper";
+			};
+			name = Release;
+		};
+		0F1C96432813BF5E00469B4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WGVRJ4U92U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "arbitrary-steve.gt-course-scraperUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "gt-course-scraper";
+			};
+			name = Debug;
+		};
+		0F1C96442813BF5E00469B4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WGVRJ4U92U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "arbitrary-steve.gt-course-scraperUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "gt-course-scraper";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F1C96132813BF5C00469B4F /* Build configuration list for PBXProject "gt-course-scraper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F1C963A2813BF5E00469B4F /* Debug */,
+				0F1C963B2813BF5E00469B4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F1C963C2813BF5E00469B4F /* Build configuration list for PBXNativeTarget "gt-course-scraper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F1C963D2813BF5E00469B4F /* Debug */,
+				0F1C963E2813BF5E00469B4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F1C963F2813BF5E00469B4F /* Build configuration list for PBXNativeTarget "gt-course-scraperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F1C96402813BF5E00469B4F /* Debug */,
+				0F1C96412813BF5E00469B4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F1C96422813BF5E00469B4F /* Build configuration list for PBXNativeTarget "gt-course-scraperUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F1C96432813BF5E00469B4F /* Debug */,
+				0F1C96442813BF5E00469B4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0F1C96102813BF5C00469B4F /* Project object */;
+}
