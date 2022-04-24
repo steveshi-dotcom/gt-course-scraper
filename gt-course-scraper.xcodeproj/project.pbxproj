@@ -16,6 +16,7 @@
 		0F1C96392813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C96382813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift */; };
 		0F1C96472814C0E900469B4F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 0F1C96462814C0E900469B4F /* SwiftSoup */; };
 		0FCCEAA02814F056003CC9E3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCCEA9F2814F056003CC9E3 /* Alamofire */; };
+		0FCCEAA22815E21A003CC9E3 /* twilio.env in Resources */ = {isa = PBXBuildFile; fileRef = 0FCCEAA12815E21A003CC9E3 /* twilio.env */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		0F1C96322813BF5E00469B4F /* gt-course-scraperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "gt-course-scraperUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F1C96362813BF5E00469B4F /* gt_course_scraperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gt_course_scraperUITests.swift; sourceTree = "<group>"; };
 		0F1C96382813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gt_course_scraperUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0FCCEAA12815E21A003CC9E3 /* twilio.env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = twilio.env; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		0F1C960F2813BF5C00469B4F = {
 			isa = PBXGroup;
 			children = (
+				0FCCEAA12815E21A003CC9E3 /* twilio.env */,
 				0F1C961A2813BF5C00469B4F /* gt-course-scraper */,
 				0F1C962B2813BF5E00469B4F /* gt-course-scraperTests */,
 				0F1C96352813BF5E00469B4F /* gt-course-scraperUITests */,
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F1C96232813BF5E00469B4F /* Preview Assets.xcassets in Resources */,
+				0FCCEAA22815E21A003CC9E3 /* twilio.env in Resources */,
 				0F1C96202813BF5E00469B4F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
