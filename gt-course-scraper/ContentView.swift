@@ -135,7 +135,7 @@ struct ContentView: View {
             let parameters = ["From": "+16075369164", "To": "+13214822272", "Body": "Steve Says Hi!👋"]
             guard let requestUrl = url else { fatalError() }
             
-            // Prepare URL Request Object
+            // Prepare URL Request Objects
             var request = URLRequest(url: requestUrl)
             request.httpMethod = "POST"
             
