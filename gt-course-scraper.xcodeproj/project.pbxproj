@@ -80,7 +80,6 @@
 		0F1C960F2813BF5C00469B4F = {
 			isa = PBXGroup;
 			children = (
-				0FCCEAA12815E21A003CC9E3 /* twilio.env */,
 				0F1C961A2813BF5C00469B4F /* gt-course-scraper */,
 				0F1C962B2813BF5E00469B4F /* gt-course-scraperTests */,
 				0F1C96352813BF5E00469B4F /* gt-course-scraperUITests */,
@@ -101,6 +100,7 @@
 		0F1C961A2813BF5C00469B4F /* gt-course-scraper */ = {
 			isa = PBXGroup;
 			children = (
+				0FCCEAA12815E21A003CC9E3 /* twilio.env */,
 				0F1C961B2813BF5C00469B4F /* gt_course_scraperApp.swift */,
 				0F1C961D2813BF5C00469B4F /* ContentView.swift */,
 				0F1C961F2813BF5E00469B4F /* Assets.xcassets */,

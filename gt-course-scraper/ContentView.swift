@@ -17,10 +17,7 @@ import Alamofire
 // Should be 7 as of 10:33PM on 23rd, check if not
 // LMC3442  86324
 
-// TODO: Check out what "[boringssl] boringssl_metrics_log_metric_block_invoke(153) Failed to log metrics" is in the debug terminal
-
 struct ContentView: View {
-
     
     
     // Current Semester: Represented search param in oscar-url
@@ -37,7 +34,6 @@ struct ContentView: View {
     @State private var curr_semester: String = semester_list[0]
     @State private var curr_crnList: [String] = []
     @State private var curr_crn: String = ""
-    @State private var phoneNum: String = ""
     
     var body: some View {
         NavigationView {
@@ -63,10 +59,6 @@ struct ContentView: View {
                             Text(currCrn)
                         }.onDelete(perform: deleteCRN)
                     }
-                }
-                Section {
-                    Text("Phone number")
-                    TextField("XXXXXXXXXX", text: $phoneNum)
                 }
                 Button(action: notify) {
                     Label("Notify Availaility", systemImage: "alarm")
@@ -124,9 +116,10 @@ struct ContentView: View {
     }
     
     // Check to see if there are any spots for the classSpot, if there is send a message, else return
-    func makeTwilioRequest(for classSpots: [String: Int]) {
+    func makeTwilioRequest(msg httpBody: String) {
+        print("SENDING")
         let url = "https://api.twilio.com/2010-04-01/Accounts/\(TWILIO_ACCOUNT_SID)/Messages"
-        let parameters = ["From": TWILIO_NUMBER, "To": PERSONAL_NUMBER, "Body": "Hello from Swift!"]
+        let parameters = ["From": TWILIO_NUMBER, "To": PERSONAL_NUMBER, "Body": httpBody]
         
         AF.request(url, method: .post, parameters: parameters)
             .authenticate(username: TWILIO_ACCOUNT_SID, password: TWILIO_AUTH_TOKEN)
@@ -135,19 +128,26 @@ struct ContentView: View {
             }
     }
     
-    // Begin notifying the courses within curr_crnList with the phoneNumber the user typed
-    func notify() {
+    // Compose the actual message if there is a need to tell the user
+    func makeMessage(for classSpot: [String: Int]) -> String {
+        var bodyMsg = "Hello from STEVE :)"
         
+        return bodyMsg
+    }
+    
+    // Begin notifying the courses within curr_crnList for the user
+    func notify() {
+        // print(ProcessInfo.processInfo.environment["TWILIO_ACCOUNT_SID"]) Not working, skip for now, cry later, all env are nil??
 
         if curr_crnList.count == 0 { return }
-        //if phoneNum.count != 10 { return }
         var classSpots: [String: Int] = [:]
         for currCrn in curr_crnList {
             let seatsLeft = loadAvailability(for: currCrn)
             classSpots[currCrn] = seatsLeft
             //if seatsLeft != 0 { classSpots[currCrn] = seatsLeft }
         }
-        //makeTwilioRequest(for: classSpots)
+        let httpBody = makeMessage(for: classSpots)
+        makeTwilioRequest(msg: httpBody)
     }
 }
 
@@ -171,7 +171,7 @@ struct ContentView_Previews: PreviewProvider {
 //        let postString = "From=\(TWILIO_NUMBER)&To=\(PERSONAL_NUMBER)&Body=Steve Says Hi!👋"
 //        request.httpBody = postString.data(using: String.Encoding.utf8)
 //
-//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in // FOR SOMEREASON NOT WORKING
 //            if let error = error {
 //                print("Error occured:\n \(error)")
 //                return
