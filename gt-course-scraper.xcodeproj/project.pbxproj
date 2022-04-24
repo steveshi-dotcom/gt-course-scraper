@@ -14,6 +14,7 @@
 		0F1C962D2813BF5E00469B4F /* gt_course_scraperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C962C2813BF5E00469B4F /* gt_course_scraperTests.swift */; };
 		0F1C96372813BF5E00469B4F /* gt_course_scraperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C96362813BF5E00469B4F /* gt_course_scraperUITests.swift */; };
 		0F1C96392813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C96382813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift */; };
+		0F1C96472814C0E900469B4F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 0F1C96462814C0E900469B4F /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1C96472814C0E900469B4F /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = "gt-course-scraper";
+			packageProductDependencies = (
+				0F1C96462814C0E900469B4F /* SwiftSoup */,
+			);
 			productName = "gt-course-scraper";
 			productReference = 0F1C96182813BF5C00469B4F /* gt-course-scraper.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 0F1C960F2813BF5C00469B4F;
+			packageReferences = (
+				0F1C96452814C0E900469B4F /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = 0F1C96192813BF5C00469B4F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -583,6 +591,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0F1C96452814C0E900469B4F /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0F1C96462814C0E900469B4F /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F1C96452814C0E900469B4F /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0F1C96102813BF5C00469B4F /* Project object */;
 }
