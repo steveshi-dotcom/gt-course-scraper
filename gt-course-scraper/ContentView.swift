@@ -18,7 +18,10 @@ import Alamofire
 // LMC3442  86324
 
 struct ContentView: View {
-    
+    private let TWILIO_ACCOUNT_SID="123456789...."  // Twilio Account SID in your console
+    private let TWILIO_AUTH_TOKEN="123456789...."   // Twilio Account Token in your console
+    private let TWILIO_NUMBER="+1XXXXXXXXXX"        // Twilio Phone number that you purchased with available credit
+    private let PERSONAL_NUMBER="+1XXXXXXXXXX"      // Personal Number that you verifie with Twilio, must be verified with Twilio
     
     // Current Semester: Represented search param in oscar-url
     static private let semester_list = ["Fall", "Spring", "Summer"]
