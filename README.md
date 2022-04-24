@@ -8,3 +8,6 @@ Register for a free account on [Twilio](https://www.twilio.com/) or ugrade if mo
 - Account Auth Token
 - Your Twilio #
 - YOur personal Number
+
+## Inputting courses to listen message for
+Input the list of CRN # and click on notify and whenever a spot is opened, a message will be sent from the Twilio API to the personal # from Twilio # inputted
