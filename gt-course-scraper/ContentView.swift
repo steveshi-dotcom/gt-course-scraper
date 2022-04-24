@@ -7,12 +7,20 @@
 
 import SwiftUI
 import SwiftSoup
+import Foundation
+import Alamofire
 
-// Testing courses
+// SAMPLE courses, should be 0 in this case since they are pretty much full, if not zero then someone trolling
 // CS2110   83167   81465
 // CS2340   86068   81106
 
+// Should be 7 as of 10:33PM on 23rd, check if not
+// LMC3442  86324
+
+// TODO: Check out what "[boringssl] boringssl_metrics_log_metric_block_invoke(153) Failed to log metrics" is in the debug terminal
+
 struct ContentView: View {
+    
     // Current Semester: Represented search param in oscar-url
     static private let semester_list = ["Fall", "Spring", "Summer"]
     static private let semester_param = ["08", "02", "05"]
@@ -28,77 +36,7 @@ struct ContentView: View {
     @State private var curr_crnList: [String] = []
     @State private var curr_crn: String = ""
     @State private var phoneNum: String = ""
-    
-    @State private var classSpots: [Int] = []
-    
-    // Parsing the whole html entities from the web using the oscar_url
-    // Oscar-url example: https://oscar.gatech.edu/bprod/bwckschd.p_disp_detail_sched?term_in=201508&crn_in=83686
-    // term_in=201508&crn_in=83686      need param: year(20??), semester(08/02/05), crn??
-    func loadAvailability(for currCourse: String) -> Int {
-        var spotLeft: Int = 0
-        do {
-            let oscarURL = URL(string: url_routes
-                               + ContentView.semester_param[ContentView.semester_list.firstIndex(of: curr_semester)!]
-                               + url_search
-                               + currCourse)
-            
-            let oscarContents = try String(contentsOf: oscarURL!)
-            // print(oscarContents)    // prints out every html entities from the current course crn
-
-            let doc: Document = try SwiftSoup.parse(oscarContents)
-            let trElements: Elements = try doc.select("tr")
-            // print(try trElements.text()) // prints out group of Tr elements: from "HELP | EXIT Detailed...Waitlist Seats 0 0 0 Return to Previous"
-
-            // Attemps to look for the number of seats by looping through the
-            for currTrElement in trElements {
-                // print("----CurrentTrElement \(currTrElement)") // prints out current Tr Element
-                
-                if try currTrElement.text().starts(with: "Seats") {
-                    let seatTrEle: Element = try currTrElement.select("td").last()!
-                    // print(seatTrEle) // Prints out the the td-Element containing number of seats left
-                    
-//                    let doc2: Document = try SwiftSoup.parseBodyFragment(currTrElement.outerHtml())
-//                    print("Printing out the elements of 2: \(doc2))")
-//                    print("Presummed Seat-Table text: \(try doc2.text())") // Prints out the row that should specify the availability of course
-//
-//                    let thElement: Elements = try doc2.select("th")
-//                    print(try thElement.text())
-                    spotLeft = Int(try seatTrEle.text())!
-                    break
-                }
-            }
-        } catch Exception.Error(let type, let msg) {
-            print("Error type: \(type)")
-            print("Error Msg: \(msg)")
-        } catch {
-            print("Error loading up the contents for the url")
-            curr_crnList.remove(at: curr_crnList.firstIndex(of: currCourse)!)
-        }
-        print("There are \(spotLeft) for \(currCourse) : ]")
-        return spotLeft
-    }
-    
-    // Append curr_crn to curr_crnList
-    func addCRN() {
-        let tempCrn = curr_crn.trimmingCharacters(in: .whitespacesAndNewlines)
-        curr_crn = ""
-        if tempCrn.count != 5 || Int(tempCrn) == nil || curr_crnList.contains(tempCrn){ return } // CRN # has to be a 5 count integer
-        curr_crnList.append(tempCrn)
-    }
-    
-    // Begin notifying the courses within curr_crnList with the phoneNumber the user typed
-    func notify() {
-        print("START NOTIFIYING")
-        if curr_crnList.count == 0 { return }
-        //if phoneNum.count != 10 { return }
-        for currCrn in curr_crnList {
-            print("Attempting to load up availability for: " + currCrn)
-            classSpots.append(loadAvailability(for: currCrn))
-        }
         
-        print("Mission successful")
-    }
-    
     var body: some View {
         NavigationView {
             Form {
@@ -121,7 +59,7 @@ struct ContentView: View {
                     List {
                         ForEach(curr_crnList, id: \.self) { currCrn in
                             Text(currCrn)
-                        }
+                        }.onDelete(perform: deleteCRN)
                     }
                 }
                 Section {
@@ -134,6 +72,100 @@ struct ContentView: View {
             }
             .navigationTitle("Course Notifier")
         }
+    }
+    
+    // Append curr_crn to curr_crnList
+    func addCRN() {
+        let tempCrn = curr_crn.trimmingCharacters(in: .whitespacesAndNewlines)
+        curr_crn = ""
+        if tempCrn.count != 5 || Int(tempCrn) == nil || curr_crnList.contains(tempCrn){ return } // CRN # has to be a 5 count integer
+        curr_crnList.append(tempCrn)
+    }
+    
+    // Remove a crn from curr_crnList
+    func deleteCRN(offset: IndexSet) {
+        curr_crnList.remove(atOffsets: offset)
+    }
+    
+    // Parsing the whole html entities from the web using the oscar_url
+    // Oscar-url example: https://oscar.gatech.edu/bprod/bwckschd.p_disp_detail_sched?term_in=201508&crn_in=83686
+    // term_in=201508&crn_in=83686      need param: year(20??), semester(08/02/05), crn??
+    func loadAvailability(for currCourse: String) -> Int {
+        var spotLeft: Int = 0
+        do {
+            let oscarURL = URL(string: url_routes
+                               + ContentView.semester_param[ContentView.semester_list.firstIndex(of: curr_semester)!]
+                               + url_search
+                               + currCourse)
+            
+            let oscarContents = try String(contentsOf: oscarURL!)
+            
+            let doc: Document = try SwiftSoup.parse(oscarContents)
+            let trElements: Elements = try doc.select("tr")
+            
+            // Attemps to look for the number of seats by looping through the
+            for currTrElement in trElements {
+                if try currTrElement.text().starts(with: "Seats") {
+                    let seatTrEle: Element = try currTrElement.select("td").last()!
+                    spotLeft = Int(try seatTrEle.text())!
+                    break
+                }
+            }
+        } catch Exception.Error(let type, let msg) {
+            print("Error type: \(type)")
+            print("Error Msg: \(msg)")
+        } catch {
+            print("Error loading up the contents for the url")
+            curr_crnList.remove(at: curr_crnList.firstIndex(of: currCourse)!)
+        }
+        return spotLeft
+    }
+    
+    // Check to see if there are any spots for the classSpot, if there is send a message, else return
+    func makeTwilioRequest(for classSpots: [String: Int]) {
+        if classSpots.count == 0 { return }
+        for classSpot in classSpots {
+            print(classSpot)
+        }
+        // Make http request to twilio
+        if let accountSID = ProcessInfo.processInfo.environment["TWILIO_ACCOUNT_SID"],
+           let authToken = ProcessInfo.processInfo.environment["TWILIO_AUTH_TOKEN"] {
+            // Prepare URL
+            let url = URL(string: "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages")
+            let parameters = ["From": "+16075369164", "To": "+13214822272", "Body": "Steve Says Hi!👋"]
+            guard let requestUrl = url else { fatalError() }
+            
+            // Prepare URL Request Object
+            var request = URLRequest(url: requestUrl)
+            request.httpMethod = "POST"
+            
+            let postString = "From=+16075369164&To=+13214822272&Body=Steve Says Hi!👋"
+            request.httpBody = postString.data(using: String.Encoding.utf8)
+            
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    print("Error occured:\n \(error)")
+                    return
+                }
+                
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("Reponse data string:\n \(dataString)")
+                }
+            }
+        }
+    }
+    
+    // Begin notifying the courses within curr_crnList with the phoneNumber the user typed
+    func notify() {
+        if curr_crnList.count == 0 { return }
+        //if phoneNum.count != 10 { return }
+        var classSpots: [String: Int] = [:]
+        for currCrn in curr_crnList {
+            let seatsLeft = loadAvailability(for: currCrn)
+            classSpots[currCrn] = seatsLeft
+            //if seatsLeft != 0 { classSpots[currCrn] = seatsLeft }
+        }
+        makeTwilioRequest(for: classSpots)
     }
 }
 

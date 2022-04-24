@@ -15,6 +15,7 @@
 		0F1C96372813BF5E00469B4F /* gt_course_scraperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C96362813BF5E00469B4F /* gt_course_scraperUITests.swift */; };
 		0F1C96392813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C96382813BF5E00469B4F /* gt_course_scraperUITestsLaunchTests.swift */; };
 		0F1C96472814C0E900469B4F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 0F1C96462814C0E900469B4F /* SwiftSoup */; };
+		0FCCEAA02814F056003CC9E3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCCEA9F2814F056003CC9E3 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F1C96472814C0E900469B4F /* SwiftSoup in Frameworks */,
+				0FCCEAA02814F056003CC9E3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +149,7 @@
 			name = "gt-course-scraper";
 			packageProductDependencies = (
 				0F1C96462814C0E900469B4F /* SwiftSoup */,
+				0FCCEA9F2814F056003CC9E3 /* Alamofire */,
 			);
 			productName = "gt-course-scraper";
 			productReference = 0F1C96182813BF5C00469B4F /* gt-course-scraper.app */;
@@ -222,6 +225,7 @@
 			mainGroup = 0F1C960F2813BF5C00469B4F;
 			packageReferences = (
 				0F1C96452814C0E900469B4F /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				0FCCEA9E2814F056003CC9E3 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 0F1C96192813BF5C00469B4F /* Products */;
 			projectDirPath = "";
@@ -601,6 +605,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		0FCCEA9E2814F056003CC9E3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -608,6 +620,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0F1C96452814C0E900469B4F /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		0FCCEA9F2814F056003CC9E3 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FCCEA9E2814F056003CC9E3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
