@@ -20,6 +20,8 @@ import Alamofire
 // TODO: Check out what "[boringssl] boringssl_metrics_log_metric_block_invoke(153) Failed to log metrics" is in the debug terminal
 
 struct ContentView: View {
+
+    
     
     // Current Semester: Represented search param in oscar-url
     static private let semester_list = ["Fall", "Spring", "Summer"]
@@ -36,7 +38,7 @@ struct ContentView: View {
     @State private var curr_crnList: [String] = []
     @State private var curr_crn: String = ""
     @State private var phoneNum: String = ""
-        
+    
     var body: some View {
         NavigationView {
             Form {
@@ -123,40 +125,20 @@ struct ContentView: View {
     
     // Check to see if there are any spots for the classSpot, if there is send a message, else return
     func makeTwilioRequest(for classSpots: [String: Int]) {
-        if classSpots.count == 0 { return }
-        for classSpot in classSpots {
-            print(classSpot)
-        }
-        // Make http request to twilio
-        if let accountSID = ProcessInfo.processInfo.environment["TWILIO_ACCOUNT_SID"],
-           let authToken = ProcessInfo.processInfo.environment["TWILIO_AUTH_TOKEN"] {
-            // Prepare URL
-            let url = URL(string: "https://api.twilio.com/2010-04-01/Accounts/\(accountSID)/Messages")
-            let parameters = ["From": "+16075369164", "To": "+13214822272", "Body": "Steve Says Hi!👋"]
-            guard let requestUrl = url else { fatalError() }
-            
-            // Prepare URL Request Objects
-            var request = URLRequest(url: requestUrl)
-            request.httpMethod = "POST"
-            
-            let postString = "From=+16075369164&To=+13214822272&Body=Steve Says Hi!👋"
-            request.httpBody = postString.data(using: String.Encoding.utf8)
-            
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if let error = error {
-                    print("Error occured:\n \(error)")
-                    return
-                }
-                
-                if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                    print("Reponse data string:\n \(dataString)")
-                }
+        let url = "https://api.twilio.com/2010-04-01/Accounts/\(TWILIO_ACCOUNT_SID)/Messages"
+        let parameters = ["From": TWILIO_NUMBER, "To": PERSONAL_NUMBER, "Body": "Hello from Swift!"]
+        
+        AF.request(url, method: .post, parameters: parameters)
+            .authenticate(username: TWILIO_ACCOUNT_SID, password: TWILIO_AUTH_TOKEN)
+            .responseJSON { response in
+                debugPrint(response)
             }
-        }
     }
     
     // Begin notifying the courses within curr_crnList with the phoneNumber the user typed
     func notify() {
+        
+
         if curr_crnList.count == 0 { return }
         //if phoneNum.count != 10 { return }
         var classSpots: [String: Int] = [:]
@@ -165,7 +147,7 @@ struct ContentView: View {
             classSpots[currCrn] = seatsLeft
             //if seatsLeft != 0 { classSpots[currCrn] = seatsLeft }
         }
-        makeTwilioRequest(for: classSpots)
+        //makeTwilioRequest(for: classSpots)
     }
 }
 
@@ -174,3 +156,28 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+//        // Prepare URL
+//        let url = URL(string: "https://api.twilio.com/2010-04-01/Accounts/\(TWILIO_ACCOUNT_SID)/Messages")
+//        let parameters = ["From": TWILIO_NUMBER,
+//                          "To": PERSONAL_NUMBER,
+//                          "Body": "Steve Says Hi!👋"]
+//        guard let requestUrl = url else { fatalError() }
+//
+//        // Prepare URL Request Objects
+//        var request = URLRequest(url: requestUrl)
+//        request.httpMethod = "POST"
+//
+//        let postString = "From=\(TWILIO_NUMBER)&To=\(PERSONAL_NUMBER)&Body=Steve Says Hi!👋"
+//        request.httpBody = postString.data(using: String.Encoding.utf8)
+//
+//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//            if let error = error {
+//                print("Error occured:\n \(error)")
+//                return
+//            }
+//
+//            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+//                print("Reponse data string:\n \(dataString)")
+//            }
+//        }
