@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftSoup
 import Foundation
 import Alamofire
+import Cron
 
 // SAMPLE courses, should be 0 in this case since they are pretty much full, if not zero then someone trolling
 // CS2110   83167   81465
@@ -18,10 +19,11 @@ import Alamofire
 // LMC3442  86324
 
 struct ContentView: View {
-    private let TWILIO_ACCOUNT_SID="123456789...."  // Twilio Account SID in your console
-    private let TWILIO_AUTH_TOKEN="123456789...."   // Twilio Account Token in your console
-    private let TWILIO_NUMBER="+1XXXXXXXXXX"        // Twilio Phone number that you purchased with available credit
-    private let PERSONAL_NUMBER="+1XXXXXXXXXX"      // Personal Number that you verifie with Twilio, must be verified with Twilio
+//    private let TWILIO_ACCOUNT_SID="123456789...."  // Twilio Account SID in your console
+//    private let TWILIO_AUTH_TOKEN="123456789...."   // Twilio Account Token in your console
+//    private let TWILIO_NUMBER="+1XXXXXXXXXX"        // Twilio Phone number that you purchased with available credit
+//    private let PERSONAL_NUMBER="+1XXXXXXXXXX"      // Personal Number that you verifie with Twilio, must be verified with Twilio
+
     
     // Current Semester: Represented search param in oscar-url
     static private let semester_list = ["Fall", "Spring", "Summer"]
@@ -37,6 +39,7 @@ struct ContentView: View {
     @State private var curr_semester: String = semester_list[0]
     @State private var curr_crnList: [String] = []
     @State private var curr_crn: String = ""
+    @State private var cron_running = false
     
     var body: some View {
         NavigationView {
@@ -132,8 +135,11 @@ struct ContentView: View {
     }
     
     // Compose the actual message if there is a need to tell the user
-    func makeMessage(for classSpot: [String: Int]) -> String {
-        var bodyMsg = "Hello from STEVE :)"
+    func makeMessage(for classSpots: [String: Int]) -> String {
+        var bodyMsg = "There is an available spot for one of the crn below"
+        for classSpot in classSpots {
+            bodyMsg.append("\n \(classSpot.key): \(classSpot.value)")
+        }
         
         return bodyMsg
     }
@@ -142,15 +148,28 @@ struct ContentView: View {
     func notify() {
         // print(ProcessInfo.processInfo.environment["TWILIO_ACCOUNT_SID"]) Not working, skip for now, cry later, all env are nil??
 
-        if curr_crnList.count == 0 { return }
-        var classSpots: [String: Int] = [:]
-        for currCrn in curr_crnList {
-            let seatsLeft = loadAvailability(for: currCrn)
-            classSpots[currCrn] = seatsLeft
-            //if seatsLeft != 0 { classSpots[currCrn] = seatsLeft }
+        cronInterval()
+//        if curr_crnList.count == 0 { return }
+//        var classSpots: [String: Int] = [:]
+//        for currCrn in curr_crnList {
+//            let seatsLeft = loadAvailability(for: currCrn)
+//            classSpots[currCrn] = seatsLeft
+//            //if seatsLeft != 0 { classSpots[currCrn] = seatsLeft }
+//        }
+//        let httpBody = makeMessage(for: classSpots)
+//        //print(httpBody)
+//        makeTwilioRequest(msg: httpBody)
+    }
+    
+    func cronInterval() {
+        cron_running.toggle()
+        do {
+            let job = try? CronJob(pattern: "* * * * * *", job: {
+                print(cron_running)
+            })
+        } catch {
+            print(error)
         }
-        let httpBody = makeMessage(for: classSpots)
-        makeTwilioRequest(msg: httpBody)
     }
 }
 

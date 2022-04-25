@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "cron-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/safx/Cron-Swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "769767bf44120b2e42bb2ee3327287a4770586d7"
+      }
+    },
+    {
       "identity" : "swiftsoup",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/scinfu/SwiftSoup",
