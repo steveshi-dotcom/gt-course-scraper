@@ -7,10 +7,7 @@
 
 import SwiftUI
 import SwiftSoup
-import Foundation
 import Alamofire
-import Cron
-import Dispatch
 
 // SAMPLE courses, should be 0 in this case since they are pretty much full, if not zero then someone trolling
 // CS2110   83167   81465
@@ -147,9 +144,6 @@ struct ContentView: View {
     
     // Begin notifying the courses within curr_crnList for the user
     func notify() {
-        // print(ProcessInfo.processInfo.environment["TWILIO_ACCOUNT_SID"]) Not working, skip for now, cry later, all env are nil??
-
-        //cronInterval()
         if curr_crnList.count == 0 { return }
         var classSpots: [String: Int] = [:]
         for currCrn in curr_crnList {
@@ -161,18 +155,6 @@ struct ContentView: View {
         print(httpBody)
         //makeTwilioRequest(msg: httpBody) (IGNORE)
     }
-    func printHello() {
-        print("Hello")
-    }
-    
-    func cronInterval() {   // Dispatch, Timer, NSBackgroundActivityScheduler
-        cron_running.toggle()
-        do {
-            let job = try? CronJob(pattern: "* * * * * *", job: printHello)
-        } catch {
-            print(error)
-        }
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -180,28 +162,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
-//        // Prepare URL
-//        let url = URL(string: "https://api.twilio.com/2010-04-01/Accounts/\(TWILIO_ACCOUNT_SID)/Messages")
-//        let parameters = ["From": TWILIO_NUMBER,
-//                          "To": PERSONAL_NUMBER,
-//                          "Body": "Steve Says Hi!👋"]
-//        guard let requestUrl = url else { fatalError() }
-//
-//        // Prepare URL Request Objects
-//        var request = URLRequest(url: requestUrl)
-//        request.httpMethod = "POST"
-//
-//        let postString = "From=\(TWILIO_NUMBER)&To=\(PERSONAL_NUMBER)&Body=Steve Says Hi!👋"
-//        request.httpBody = postString.data(using: String.Encoding.utf8)
-//
-//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in // FOR SOMEREASON NOT WORKING
-//            if let error = error {
-//                print("Error occured:\n \(error)")
-//                return
-//            }
-//
-//            if let data = data, let dataString = String(data: data, encoding: .utf8) {
-//                print("Reponse data string:\n \(dataString)")
-//            }
-//        }
