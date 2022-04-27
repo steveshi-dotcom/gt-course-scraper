@@ -10,6 +10,7 @@ import SwiftSoup
 import Foundation
 import Alamofire
 import Cron
+import Dispatch
 
 // SAMPLE courses, should be 0 in this case since they are pretty much full, if not zero then someone trolling
 // CS2110   83167   81465
@@ -19,11 +20,11 @@ import Cron
 // LMC3442  86324
 
 struct ContentView: View {
-//    private let TWILIO_ACCOUNT_SID="123456789...."  // Twilio Account SID in your console
-//    private let TWILIO_AUTH_TOKEN="123456789...."   // Twilio Account Token in your console
-//    private let TWILIO_NUMBER="+1XXXXXXXXXX"        // Twilio Phone number that you purchased with available credit
-//    private let PERSONAL_NUMBER="+1XXXXXXXXXX"      // Personal Number that you verifie with Twilio, must be verified with Twilio
-
+    // IGNORE These four properties, attempted to use twilio for other job, but didn't work as intended.
+    private let TWILIO_ACCOUNT_SID="123456789...."  // Twilio Account SID in your console
+    private let TWILIO_AUTH_TOKEN="123456789...."   // Twilio Account Token in your console
+    private let TWILIO_NUMBER="+1XXXXXXXXXX"        // Twilio Phone number that you purchased with available credit
+    private let PERSONAL_NUMBER="+1XXXXXXXXXX"      // Personal Number that you verifie with Twilio, must be verified with Twilio
     
     // Current Semester: Represented search param in oscar-url
     static private let semester_list = ["Fall", "Spring", "Summer"]
@@ -37,7 +38,7 @@ struct ContentView: View {
     private let url_search = "&crn_in="
     
     @State private var curr_semester: String = semester_list[0]
-    @State private var curr_crnList: [String] = []
+    @State private var curr_crnList: [String] = ["83167", "81465", "86068", "81106", "86324"]
     @State private var curr_crn: String = ""
     @State private var cron_running = false
     
@@ -121,7 +122,7 @@ struct ContentView: View {
         return spotLeft
     }
     
-    // Check to see if there are any spots for the classSpot, if there is send a message, else return
+    // Check to see if there are any spots for the classSpot, if there is send a message, else return (IGNORE)
     func makeTwilioRequest(msg httpBody: String) {
         print("SENDING")
         let url = "https://api.twilio.com/2010-04-01/Accounts/\(TWILIO_ACCOUNT_SID)/Messages"
@@ -134,7 +135,7 @@ struct ContentView: View {
             }
     }
     
-    // Compose the actual message if there is a need to tell the user
+    // Compose the actual message if there is a need to tell the user (IGNORE)
     func makeMessage(for classSpots: [String: Int]) -> String {
         var bodyMsg = "There is an available spot for one of the crn below"
         for classSpot in classSpots {
@@ -148,25 +149,26 @@ struct ContentView: View {
     func notify() {
         // print(ProcessInfo.processInfo.environment["TWILIO_ACCOUNT_SID"]) Not working, skip for now, cry later, all env are nil??
 
-        cronInterval()
-//        if curr_crnList.count == 0 { return }
-//        var classSpots: [String: Int] = [:]
-//        for currCrn in curr_crnList {
-//            let seatsLeft = loadAvailability(for: currCrn)
-//            classSpots[currCrn] = seatsLeft
-//            //if seatsLeft != 0 { classSpots[currCrn] = seatsLeft }
-//        }
-//        let httpBody = makeMessage(for: classSpots)
-//        //print(httpBody)
-//        makeTwilioRequest(msg: httpBody)
+        //cronInterval()
+        if curr_crnList.count == 0 { return }
+        var classSpots: [String: Int] = [:]
+        for currCrn in curr_crnList {
+            let seatsLeft = loadAvailability(for: currCrn)
+            classSpots[currCrn] = seatsLeft
+            //if seatsLeft != 0 { classSpots[currCrn] = seatsLeft }
+        }
+        let httpBody = makeMessage(for: classSpots)
+        print(httpBody)
+        //makeTwilioRequest(msg: httpBody) (IGNORE)
+    }
+    func printHello() {
+        print("Hello")
     }
     
-    func cronInterval() {
+    func cronInterval() {   // Dispatch, Timer, NSBackgroundActivityScheduler
         cron_running.toggle()
         do {
-            let job = try? CronJob(pattern: "* * * * * *", job: {
-                print(cron_running)
-            })
+            let job = try? CronJob(pattern: "* * * * * *", job: printHello)
         } catch {
             print(error)
         }
