@@ -12,12 +12,10 @@ import Alamofire
 // SAMPLE courses, should be 0 in this case since they are pretty much full, if not zero then someone trolling
 // CS2110   83167   81465
 // CS2340   86068   81106
-
-// Should be 7 as of 10:33PM on 23rd, check if not
 // LMC3442  86324
 
 struct ContentView: View {
-    // IGNORE These four properties, attempted to use twilio for other job, but didn't work as intended.
+    // IGNORE These four properties, attempted to use twilio for other job, but didn't work as intended. // IGNORE
     private let TWILIO_ACCOUNT_SID="123456789...."  // Twilio Account SID in your console
     private let TWILIO_AUTH_TOKEN="123456789...."   // Twilio Account Token in your console
     private let TWILIO_NUMBER="+1XXXXXXXXXX"        // Twilio Phone number that you purchased with available credit
@@ -35,7 +33,8 @@ struct ContentView: View {
     private let url_search = "&crn_in="
     
     @State private var curr_semester: String = semester_list[0]
-    @State private var curr_crnList: [String] = ["83167", "81465", "86068", "81106", "86324"]
+    @State private var curr_crnList: [String] = []
+    @State private var curr_crnRes: [String: Int] = [:]
     @State private var curr_crn: String = ""
     @State private var cron_running = false
     
@@ -43,7 +42,7 @@ struct ContentView: View {
         NavigationView {
             Form {
                 Section {
-                    Text("What semester are we looking at in \(ContentView.year_search_param)?")
+                    Text("What semester are we looking at in \(String(ContentView.year_search_param))?")
                     Picker("\(curr_semester) semester", selection: $curr_semester) {
                         ForEach(ContentView.semester_list, id:\.self) {
                             Text($0)
@@ -51,7 +50,7 @@ struct ContentView: View {
                     }
                 }
                 Section {
-                    Text("List of CRN to notify you")
+                    Text("List of CRN to check (ex: 83167)")
                     HStack {
                         TextField("CRN #", text: $curr_crn)
                         Button(action: addCRN) {
@@ -60,12 +59,14 @@ struct ContentView: View {
                     }
                     List {
                         ForEach(curr_crnList, id: \.self) { currCrn in
-                            Text(currCrn)
+                            Text("\(currCrn)   -->   \(curr_crnRes[currCrn] ?? -99)")
                         }.onDelete(perform: deleteCRN)
                     }
                 }
-                Button(action: notify) {
-                    Label("Notify Availaility", systemImage: "alarm")
+                Section {
+                    Button(action: notify) {
+                        Label("Check Availaility", systemImage: "alarm")
+                    }
                 }
             }
             .navigationTitle("Course Notifier")
@@ -116,6 +117,7 @@ struct ContentView: View {
             print("Error loading up the contents for the url")
             curr_crnList.remove(at: curr_crnList.firstIndex(of: currCourse)!)
         }
+        curr_crnRes[currCourse] = spotLeft
         return spotLeft
     }
     
@@ -149,11 +151,8 @@ struct ContentView: View {
         for currCrn in curr_crnList {
             let seatsLeft = loadAvailability(for: currCrn)
             classSpots[currCrn] = seatsLeft
-            //if seatsLeft != 0 { classSpots[currCrn] = seatsLeft }
         }
         let httpBody = makeMessage(for: classSpots)
-        print(httpBody)
-        //makeTwilioRequest(msg: httpBody) (IGNORE)
     }
 }
 
