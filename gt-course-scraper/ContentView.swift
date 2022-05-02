@@ -15,12 +15,6 @@ import Alamofire
 // LMC3442  86324
 
 struct ContentView: View {
-    // IGNORE These four properties, attempted to use twilio for other job, but didn't work as intended. // IGNORE
-    private let TWILIO_ACCOUNT_SID="123456789...."  // Twilio Account SID in your console
-    private let TWILIO_AUTH_TOKEN="123456789...."   // Twilio Account Token in your console
-    private let TWILIO_NUMBER="+1XXXXXXXXXX"        // Twilio Phone number that you purchased with available credit
-    private let PERSONAL_NUMBER="+1XXXXXXXXXX"      // Personal Number that you verifie with Twilio, must be verified with Twilio
-    
     // Current Semester: Represented search param in oscar-url
     static private let semester_list = ["Fall", "Spring", "Summer"]
     static private let semester_param = ["08", "02", "05"]
@@ -64,12 +58,13 @@ struct ContentView: View {
                     }
                 }
                 Section {
-                    Button(action: notify) {
+                    Text("Click to see the current seats for each CRN")
+                    Button(action: checkAvailability) {
                         Label("Check Availaility", systemImage: "alarm")
                     }
                 }
             }
-            .navigationTitle("Course Notifier")
+            .navigationTitle("Course Checker")
         }
     }
     
@@ -121,38 +116,14 @@ struct ContentView: View {
         return spotLeft
     }
     
-    // Check to see if there are any spots for the classSpot, if there is send a message, else return (IGNORE)
-    func makeTwilioRequest(msg httpBody: String) {
-        print("SENDING")
-        let url = "https://api.twilio.com/2010-04-01/Accounts/\(TWILIO_ACCOUNT_SID)/Messages"
-        let parameters = ["From": TWILIO_NUMBER, "To": PERSONAL_NUMBER, "Body": httpBody]
-        
-        AF.request(url, method: .post, parameters: parameters)
-            .authenticate(username: TWILIO_ACCOUNT_SID, password: TWILIO_AUTH_TOKEN)
-            .responseJSON { response in
-                debugPrint(response)
-            }
-    }
-    
-    // Compose the actual message if there is a need to tell the user (IGNORE)
-    func makeMessage(for classSpots: [String: Int]) -> String {
-        var bodyMsg = "There is an available spot for one of the crn below"
-        for classSpot in classSpots {
-            bodyMsg.append("\n \(classSpot.key): \(classSpot.value)")
-        }
-        
-        return bodyMsg
-    }
-    
-    // Begin notifying the courses within curr_crnList for the user
-    func notify() {
+    // Check the courses within curr_crnList for the user
+    func checkAvailability() {
         if curr_crnList.count == 0 { return }
         var classSpots: [String: Int] = [:]
         for currCrn in curr_crnList {
             let seatsLeft = loadAvailability(for: currCrn)
             classSpots[currCrn] = seatsLeft
         }
-        let httpBody = makeMessage(for: classSpots)
     }
 }
 
